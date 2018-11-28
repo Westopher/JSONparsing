@@ -18,7 +18,10 @@ struct Course {
 
 class ViewController: UIViewController {
 
-  //api.letsbuildthatapp.com/jsondecodable/course
+    let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
+    let url = URL(string: jsonUrlString)
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
