@@ -17,15 +17,21 @@ struct Course {
 }
 
 class ViewController: UIViewController {
-
-    let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
-    let url = URL(string: jsonUrlString)
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
+        guard let url = URL(string: jsonUrlString) else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            //check error
+            //check response status
+            print("this session is working")
+        }.resume()
+        
+        
+        
     }
 
 
