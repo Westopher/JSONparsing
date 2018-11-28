@@ -15,17 +15,20 @@ struct Course: Decodable {
     let link: String
     let imageUrl: String
     
-    init(json: [String: Any]) {
-        id = json["id"] as? Int ?? -1
-        name = json["name"] as? String ?? ""
-        link = json["link"] as? String ?? ""
-        imageUrl = json["imageURL"] as? String ?? ""
-    }
+    //no need for an initializer with decodable
+//    init(json: [String: Any]) {
+//        id = json["id"] as? Int ?? -1
+//        name = json["name"] as? String ?? ""
+//        link = json["link"] as? String ?? ""
+//        imageUrl = json["imageURL"] as? String ?? ""
+//    }
 }
 
 
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var displayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,8 @@ class ViewController: UIViewController {
             do {
                 let course = try JSONDecoder().decode(Course.self, from: data)
                 print(course.id)
+                
+                
             } catch let jsonErr {
                 print("Error serializing json", jsonErr)
             }
@@ -56,9 +61,7 @@ class ViewController: UIViewController {
         }.resume()
         
         
-        
     }
-
-
+    
 }
 
